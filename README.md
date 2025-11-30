@@ -35,10 +35,6 @@ A comparative study of U-Net and Mask R-CNN architectures for traffic sign detec
 How it works: We built this using an Encoder-Decoder architecture with Skip Connections.
 Encoder (Downsampling): The left side of the "U". It takes the image and shrinks it down, extracting high-level features (like shapes and edges) while throwing away spatial details. Think of this like summarizing a book into bullet points.
 
-Decoder (Upsampling): The right side of the "U". It takes those "bullet points" and tries to reconstruct the full-resolution image mask.
-Skip Connections: This is the magic part. Since the Encoder threw away spatial details (where things are), We "wired" the left layers directly to the right layers. We paste the high-resolution details from the start directly onto the end.
-
-In Simple Terms: Imagine trying to draw a map of a city from memory (Encoder). You might remember the general layout but forget exactly where the street corners are. Skip Connections are like having a cheat sheet of the original map right next to you so you can draw the street corners perfectly (Decoder).
 
 2. The Tiny Mask R-CNN (The Custom Lightweight)
 
@@ -46,7 +42,6 @@ How it works: Instead of using the massive, standard Mask R-CNN (which is huge a
 Backbone: We used a simple series of Convolutional layers to look at the image and find "features" (is there a wheel? is there a window?).
 RPN (Region Proposal Network) Logic: In a full R-CNN, this suggests where objects are. In the Tiny version, We implemented a simplified branch that focuses the network on the area where the car likely exists before trying to draw the mask.
 Mask Head: The final layers that output the binary (black and white) mask.
-In Simple Terms: If U-Net paints the whole canvas at once, Mask R-CNN is more like a spotlight. It tries to figure out roughly where the object is first, and then focuses its "painting" effort on that specific area to draw the mask.
 
 3. How We Trained Them
 The Data:
@@ -71,12 +66,14 @@ The Math:
 IoU= Area of Union / Area of Overlap
 ​	
 In Simple Terms:
-Intersection: The area where the model and the answer key both agreed "this is a car."
-Union: The total area covered by either the model or the answer key.
-The Score: If the model draws a box perfectly over the car, the score is 1.0 (100%). If We draw a box on a tree instead of the car, the score is 0.0 (0%).
+* Intersection: The area where the model and the answer key both agreed "this is a car."
+* Union: The total area covered by either the model or the answer key.
+* The Score: If the model draws a box perfectly over the car, the score is 1.0 (100%). If We draw a box on a tree instead of the car, the score is 0.0 (0%).
+
 Other Metrics We used:
-Precision: When We predicted a pixel was a car, how often was We right? (Avoiding false alarms).
-Recall: Did We find all the car pixels, or did We miss some? (Avoiding misses).
+
+* Precision: When We predicted a pixel was a car, how often was We right? (Avoiding false alarms).
+* Recall: Did We find all the car pixels, or did We miss some? (Avoiding misses).
 
 ## Lessons Learned:
 * M1 Mac limitations for running Mask R-CNN: had to reduce batch size and learning rate to accomodate
