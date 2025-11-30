@@ -15,67 +15,25 @@ A comparative study of U-Net and Mask R-CNN architectures for traffic sign detec
 
 1. Ferdinand Virtudes
 - Developed Project Roadmap and delegated tasks
-- Researched kaggle dataset 
-- Developed U-NET architecture
-- Conducted U-NET preprocessing from Kaggle dataset
+- Researched kaggle dataset
+- Implemented MASK R-CNN model
+- Implemented U-NET model
+- U-NET/Mask R-CNN preprocessing from Kaggle dataset
+- Conducted experiments (K-fold, hyperparameter tuning, final test evaluation) 
 - Created base presentation template
+- Prepared presentation 
 
 ## How It's Made:
 
 **Data used:** https://www.kaggle.com/datasets/pkdarabi/cardetection/data
 
-**Tools used:** Python, Google Colab, Pytorch....
+**Tech used:** Python, Google Colab, 
 
-# How it works
-
-1. The U-Net Model (The "U" Shape)
-How it works: We built this using an Encoder-Decoder architecture with Skip Connections.
-Encoder (Downsampling): The left side of the "U". It takes the image and shrinks it down, extracting high-level features (like shapes and edges) while throwing away spatial details. Think of this like summarizing a book into bullet points.
-
-Decoder (Upsampling): The right side of the "U". It takes those "bullet points" and tries to reconstruct the full-resolution image mask.
-Skip Connections: This is the magic part. Since the Encoder threw away spatial details (where things are), We "wired" the left layers directly to the right layers. We paste the high-resolution details from the start directly onto the end.
-
-In Simple Terms: Imagine trying to draw a map of a city from memory (Encoder). You might remember the general layout but forget exactly where the street corners are. Skip Connections are like having a cheat sheet of the original map right next to you so you can draw the street corners perfectly (Decoder).
-
-2. The Tiny Mask R-CNN (The Custom Lightweight)
-
-How it works: Instead of using the massive, standard Mask R-CNN (which is huge and slow), We built a "Tiny" custom version optimized for the M1 chip.
-Backbone: We used a simple series of Convolutional layers to look at the image and find "features" (is there a wheel? is there a window?).
-RPN (Region Proposal Network) Logic: In a full R-CNN, this suggests where objects are. In the Tiny version, We implemented a simplified branch that focuses the network on the area where the car likely exists before trying to draw the mask.
-Mask Head: The final layers that output the binary (black and white) mask.
-In Simple Terms: If U-Net paints the whole canvas at once, Mask R-CNN is more like a spotlight. It tries to figure out roughly where the object is first, and then focuses its "painting" effort on that specific area to draw the mask.
-
-3. How We Trained Them
-The Data:
-* We started with car images and YOLO text files (which are just bounding boxes).
-* We wrote a script to convert those boxes into Binary Masks (black background, white square where the car is).
-* We resized everything to 128x128 pixels so the Mac could handle the math quickly.
-
-The Process (5-Fold Cross-Validation): We didn't just train it once. We used a technique called 5-Fold Cross-Validation.
-* We cut the data into 5 equal pieces.
-* We trained the model on 4 pieces and tested it on the 5th.
-* We repeated this 5 times, rotating which piece was the "test" piece.
-
-Hyperparameter Tuning: We ran a grid search to find the best settings.
-Learning Rate: We tested 0.001 vs 0.0005. (Do We try to learn fast and messy, or slow and careful?)
-Batch Size: We tested 16 vs 32. (Do We look at 16 images at a time, or 32?)
-
-4. How We Evaluated Them
-To grade the models, We used IoU (Intersection over Union) as the main score.
-
-The Math:
-
-IoU= Area of Union / Area of Overlap
-​	
-In Simple Terms:
-Intersection: The area where the model and the answer key both agreed "this is a car."
-Union: The total area covered by either the model or the answer key.
-The Score: If the model draws a box perfectly over the car, the score is 1.0 (100%). If We draw a box on a tree instead of the car, the score is 0.0 (0%).
-Other Metrics We used:
-Precision: When We predicted a pixel was a car, how often was We right? (Avoiding false alarms).
-Recall: Did We find all the car pixels, or did We miss some? (Avoiding misses).
+## Optimizations
+*(optional)*
 
 ## Lessons Learned:
+* M1 Mac limitations for running Mask R-CNN: had to reduce batch size and learning rate to accomodate
 
 
 
