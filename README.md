@@ -51,10 +51,7 @@ Mask Head: The final layers that output the binary (black and white) mask.
 <details>
 <summary>
 We preprocessed the data to suit the two models and experimented with K-fold cross validation and Hyperparameter tuning </summary>
-The Data:
-* We started with car images and YOLO text files (which are just bounding boxes).
-* We wrote a script to convert those boxes into Binary Masks (black background, white square where the car is).
-* We resized everything to 128x128 pixels so the Mac could handle the math quickly.
+The Data: We started with car images and YOLO text files (which are just bounding boxes). Then we wrote a script to convert those boxes into Binary Masks (black background, white square where the car is). We resized everything to 256x256 pixels and 128x128 for Mask R-CNN so the Mac could handle the math quickly.
 
 The Process (5-Fold Cross-Validation):
 
