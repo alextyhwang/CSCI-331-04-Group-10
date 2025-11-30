@@ -14,21 +14,25 @@ A comparative study of U-Net and Mask R-CNN architectures for traffic sign detec
 
 1. Ferdinand Virtudes
 - Developed Project Roadmap and delegated tasks
-- Researched kaggle dataset 
-- Developed U-NET architecture
-- Conducted U-NET preprocessing from Kaggle dataset
+- Researched kaggle dataset
+- Implemented MASK R-CNN model
+- Implemented U-NET model
+- U-NET/Mask R-CNN preprocessing from Kaggle dataset
+- Conducted experiments (K-fold, hyperparameter tuning, final test evaluation) 
 - Created base presentation template
+- Prepared presentation 
 
 ## How It's Made:
 
 **Data used:** https://www.kaggle.com/datasets/pkdarabi/cardetection/data
 
-**Tech used:** Python, Google Colab, 
+**Tech used:** Python, Google Colab
 
 ## Optimizations
 *(optional)*
 
 ## Lessons Learned:
+* M1 Mac limitations for running Mask R-CNN: had to reduce batch size and learning rate to accomodate
 
 
 
