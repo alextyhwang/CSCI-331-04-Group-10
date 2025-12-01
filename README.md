@@ -23,6 +23,13 @@ A comparative study of U-Net and Mask R-CNN architectures for traffic sign detec
 - Created base presentation template
 - Prepared presentation 
 
+2. Alex Wang
+- Researched kaggle dataset, Mask R-CNN and U-NET model.
+- Conducted experiments with the models.
+- Prepared presentation 
+- Created "How to Run" guide in ReadME.md
+- Created requirements.txt for running model.
+
 ---
 
 ## How to Run
