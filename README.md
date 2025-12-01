@@ -23,6 +23,86 @@ A comparative study of U-Net and Mask R-CNN architectures for traffic sign detec
 - Created base presentation template
 - Prepared presentation 
 
+---
+
+## How to Run
+
+### Prerequisites
+- Python 3.10 or higher
+- pip (Python package manager)
+- Jupyter Notebook or Google Colab
+
+### Option 1: Local Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/YOUR_USERNAME/CSCI-331-04-Group-10.git
+cd CSCI-331-04-Group-10
+```
+
+2. **Create a virtual environment (recommended)**
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+4. **Verify installation**
+```bash
+python -c "import tensorflow; import cv2; import sklearn; print('All dependencies installed!')"
+```
+
+5. **Download the dataset**
+- Download from [Kaggle Car Detection Dataset](https://www.kaggle.com/datasets/pkdarabi/cardetection/data)
+- Extract to `data/car/` directory
+- Ensure structure:
+  ```
+  data/car/
+  ├── train/
+  │   ├── images/
+  │   └── labels/
+  ├── valid/
+  │   ├── images/
+  │   └── labels/
+  └── test/
+      ├── images/
+      └── labels/
+  ```
+
+6. **Run the notebooks**
+```bash
+jupyter notebook code/train_UNET2.ipynb
+jupyter notebook code/train_Mask-RCNN.ipynb
+jupyter notebook code/analysis.ipynb
+```
+
+### Option 2: Google Colab (Recommended for GPU access)
+
+1. Upload notebooks from `code/` to Google Colab
+2. Upload the dataset to Google Drive or use Kaggle API
+3. Update the `DATA_PATH` variable in notebooks to point to your data location
+4. Run cells sequentially
+
+### Running the Experiments
+
+| Notebook | Purpose | Runtime |
+|----------|---------|---------|
+| `train_UNET2.ipynb` | Train U-Net model with K-fold CV and hyperparameter tuning | ~2-4 hours (CPU) |
+| `train_Mask-RCNN.ipynb` | Train Mask R-CNN model with experiments | ~1-2 hours (CPU) |
+| `analysis.ipynb` | Generate comparison plots and analysis | ~1 minute |
+
+### Output Files
+After training, results are saved to:
+- `data/results/` - Metrics CSVs and comparison plots
+- `data/models/` - Trained model weights (.h5, .pth)
+- `code/` - Experiment result files
+
+---
+
 ## How It's Made:
 
 **Data used:** https://www.kaggle.com/datasets/pkdarabi/cardetection/data
