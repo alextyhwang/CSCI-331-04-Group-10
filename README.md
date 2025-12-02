@@ -15,7 +15,7 @@ A comparative study of U-Net and Mask R-CNN architectures for traffic sign detec
 
 1. Ferdinand Virtudes
 - Developed Project Roadmap and delegated tasks
-- Researched kaggle dataset
+- Researched kaggle dataset, U-NET model, Mask R-CNN model
 - Implemented MASK R-CNN model
 - Implemented U-NET model
 - U-NET/Mask R-CNN preprocessing from Kaggle dataset
