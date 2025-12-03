@@ -30,11 +30,6 @@ A comparative study of U-Net and Mask R-CNN architectures for traffic sign detec
 - Created "How to Run" guide in ReadME.md
 - Created requirements.txt for running model.
 
-3. Iris Li
-- Researched evaluation metrics: IOU, Precision, Recall, F1
-- Prepared presernation
-- Conducted testing for the models
-- Helped with documentation
 ---
 
 ## How to Run
